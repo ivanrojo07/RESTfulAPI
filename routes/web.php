@@ -17,5 +17,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('fabricante', 'FabricanteController');
+Route::resource('fabricantes', 'FabricanteController');
 Route::resource('fabricante.vehiculos','VehiculoController');
