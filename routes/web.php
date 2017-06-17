@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'VehiculoController@showAll');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('fabricante', 'FabricanteController');
+Route::resource('fabricante.vehiculos','VehiculoController');
