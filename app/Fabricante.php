@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Vehiculo;
 class Fabricante extends Model
 {
     //
@@ -14,7 +14,7 @@ class Fabricante extends Model
 
     public function vehiculos ()
     {
-    	$this->hasMany('Vehiculo');
+    	return $this->hasMany('App\Vehiculo', 'fabricante_id');
     }
 
 }
