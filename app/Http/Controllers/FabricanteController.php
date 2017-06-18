@@ -15,7 +15,8 @@ class FabricanteController extends Controller
     public function index()
     {
         //
-        return 'mostrar todos los fabricantes';
+        //return 'mostrar todos los fabricantes';
+        return response()->json(['datos'=>Fabricante::all()],200);
     }
 
     /**
@@ -46,10 +47,15 @@ class FabricanteController extends Controller
      * @param  \App\Fabricante  $fabricante
      * @return \Illuminate\Http\Response
      */
-    public function show(Fabricante $fabricante)
+    public function show($fabricante)
     {
+        $fabricante = Fabricante::find($fabricante);
         //
-        return 'Mostrando fabricante con id'.$fabricante;
+        if(!$fabricante)
+        {
+            return response()->json(['mensaje'=>'No existe el fabricante', 'codigo'=>404],404);
+        }
+        return response()->json(['datos'=>$fabricante],200);
 
     }
 

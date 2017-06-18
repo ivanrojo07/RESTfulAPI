@@ -17,5 +17,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('vehiculos', 'VehiculoController', ['only'=>['index', 'show']]);
 Route::resource('fabricantes', 'FabricanteController');
-Route::resource('fabricante.vehiculos','VehiculoController');
+Route::resource('fabricante.vehiculos','FabricanteVehiculoController', ['except' => ['show']]);

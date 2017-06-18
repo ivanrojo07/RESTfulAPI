@@ -4,18 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Vehiculo;
 use Illuminate\Http\Request;
+use App\Fabricante;
 
-class VehiculoController extends Controller
+class FabricanteVehiculoController extends Controller
 {
+
+    public function showAll()
+    {
+        return 'mostrar todos los vehiculos';
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Fabricante $fabricante)
     {
         //
-        return response()->json(['datos'=>Vehiculo::all()],200);
+        return 'mostrando los vehiculos del fabricante con id'.$fabricante;
     }
 
     /**
@@ -23,9 +29,10 @@ class VehiculoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Fabricante $fabricante)
     {
         //
+        return 'Mostrar formulario de creacion de vehiculo para fabricante con id'.$fabricante;
     }
 
     /**
@@ -45,17 +52,10 @@ class VehiculoController extends Controller
      * @param  \App\Vehiculo  $vehiculo
      * @return \Illuminate\Http\Response
      */
-    public function show($vehiculo)
+    public function show(Fabricante $fabricante, Vehiculo $vehiculo )
     {
         //
-        $vehiculo = Vehiculo::find($vehiculo);
-        //
-        if(!$vehiculo)
-        {
-            return response()->json(['mensaje'=>'No existe el vehiculo', 'codigo'=>404],404);
-        }
-        return response()->json(['datos'=>$vehiculo],200);
-
+        return 'Mostrando vehiculo'.$vehiculo.'del fabricante'.$fabricante;
     }
 
     /**
@@ -64,9 +64,10 @@ class VehiculoController extends Controller
      * @param  \App\Vehiculo  $vehiculo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vehiculo $vehiculo)
+    public function edit(Fabricante $fabricante, Vehiculo $vehiculo)
     {
         //
+        return 'Mostrar formulario para modificar vehiculo'.$vehiculo.'del fabricante'.$fabricante;
     }
 
     /**
@@ -76,7 +77,7 @@ class VehiculoController extends Controller
      * @param  \App\Vehiculo  $vehiculo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vehiculo $vehiculo)
+    public function update(Request $request,Fabricante $fabricante, Vehiculo $vehiculo)
     {
         //
     }
@@ -87,7 +88,7 @@ class VehiculoController extends Controller
      * @param  \App\Vehiculo  $vehiculo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vehiculo $vehiculo)
+    public function destroy(Fabricante $fabricante, Vehiculo $vehiculo)
     {
         //
     }
